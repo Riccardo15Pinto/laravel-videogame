@@ -120,4 +120,10 @@ class VideogameController extends Controller
 
         return to_route('admin.videogames.index');
     }
+
+    public function trash()
+    {
+        $videogames = Videogame::onlyTrashed()->get();
+        return view('admin.videogames.trash', compact('videogames'));
+    }
 }

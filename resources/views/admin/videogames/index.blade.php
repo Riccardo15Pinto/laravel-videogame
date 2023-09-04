@@ -9,13 +9,14 @@
         </div>
         <div class="d-flex justify-content-end my-3">
             <a href="{{ route('admin.videogames.create') }}" class="btn btn-success ms-2">Create new videogame</a>
+            <a href="{{ route('admin.videogames.trash') }}" class="btn btn-warning ms-2">Trash</a>
         </div>
     </header>
 
     <div class="row">
         @foreach ($videogames as $videogame)
-            <div class="col-md-4">
-                <div class="card mb-4">
+            <div class="col-md-4 my-4">
+                <div class="card mb-4 h-100 d-flex flex-column">
                     <img src="{{ $videogame->img_path }}" class="card-img-top" alt="{{ $videogame->title }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ $videogame->title }}</h5>
