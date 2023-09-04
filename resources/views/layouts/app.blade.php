@@ -95,7 +95,7 @@
         </nav>
 
         <main class="container">
-            @include('admin/includes/alerts.blade.php')
+            @include('admin.includes.alerts')
             @yield('content')
         </main>
     </div>
