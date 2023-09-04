@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\VideogameController;
+use App\Http\Controllers\Guests\HomeController as GuestsHomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,13 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('guests.home');
+Route::get('/', [GuestsHomeController::class, 'index'])->name('guests.home');
+
+
+Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function () {
+    Route::get('/', [AdminHomeController::class, 'index'])->name('home');
+    Route::resource('videogames', VideogameController::class);
 });
 
-Route::get('/admin', function () {
-    return view('admin.home');
-})->middleware(['auth', 'verified'])->name('admin.home');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
