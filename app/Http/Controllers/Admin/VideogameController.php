@@ -86,8 +86,11 @@ class VideogameController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Videogame $videogame)
+    public function destroy(string $id)
     {
-        //
+        $videogame = Videogame::findOrFail($id);
+        $videogame->delete();
+
+        return to_route('admin.index');
     }
 }
