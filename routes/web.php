@@ -22,6 +22,7 @@ Route::get('/', [GuestsHomeController::class, 'index'])->name('guests.home');
 
 Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminHomeController::class, 'index'])->name('home');
+    Route::get('videogames/trash', [VideogameController::class, 'trash'])->name('videogames.trash');
     Route::resource('videogames', VideogameController::class);
 });
 

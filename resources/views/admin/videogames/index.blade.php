@@ -9,8 +9,10 @@
         </div>
         <div class="d-flex justify-content-end my-3">
             <a href="{{ route('admin.videogames.create') }}" class="btn btn-success ms-2">Create new videogame</a>
+            <a href="{{ route('admin.videogames.trash') }}" class="btn btn-warning ms-2">Trash</a>
         </div>
     </header>
+
 
     <div class="indexContent">
         <table class="table mb-4">
@@ -46,5 +48,6 @@
                 @endforelse
             </tbody>
         </table>
+
     </div>
 @endsection
