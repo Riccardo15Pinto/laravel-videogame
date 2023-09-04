@@ -59,7 +59,7 @@ class VideogameController extends Controller
 
         $videogame->save();
 
-        return to_route('admin.videogames.show', $videogame)->with('alert-message', 'Post creato con successo');;
+        return to_route('admin.videogames.show', $videogame)->with('alert-message', 'Videogame creato con successo');;
     }
 
     /**
@@ -108,7 +108,7 @@ class VideogameController extends Controller
 
         $videogame->update($data_new_videogame);
 
-        return to_route('admin.videogames.show', $videogame)->with('alert-type', 'success')->with('alert-message', "$videogame->title modificato con successo");
+        return to_route('admin.videogames.show', $videogame)->with('alert-type', 'success')->with('alert-message', "Il videogame $videogame->title è stato modificato con successo");
     }
 
     /**
@@ -118,7 +118,7 @@ class VideogameController extends Controller
     {
         $videogame->delete();
 
-        return to_route('admin.videogames.index');
+        return to_route('admin.videogames.index')->with('alert-message', 'Videogame eliminato con successo');
     }
 
     public function trash()
