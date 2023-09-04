@@ -50,7 +50,7 @@
                                 <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">VideoGames</a>
+                                <a href="{{ route('admin.videogames.index') }}" class="nav-link">VideoGames</a>
                             </li>
                         @endguest
                     </ul>

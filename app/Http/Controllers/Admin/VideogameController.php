@@ -25,7 +25,7 @@ class VideogameController extends Controller
     {
         $videogame = new Videogame();
 
-        return view('admin.create', compact('videogame'));
+        return view('admin.videogames.create', compact('videogame'));
     }
 
     /**
@@ -39,8 +39,8 @@ class VideogameController extends Controller
                 'title' => 'required|string|max:50',
                 'description' => 'required|string',
                 'img_path' => 'required|url:http,https',
-                'release_date' => 'required|string',
-                'min_age' => 'required|string|min:6|max:18'
+                'release_date' => 'required|date',
+                'min_age' => 'required|string'
             ],
             [
                 'title.required' => 'Il Nome del videogioco è obbligatorio',
@@ -49,8 +49,7 @@ class VideogameController extends Controller
                 'description.required' => 'La descrizione è obbligatoria',
                 'release_date.required' => 'La data di uscita è obbligatoria',
                 'min_age.required' => 'L\' età consigliata è obbligatoria',
-                'min_age.min' => 'L\' età consigliata deve essere minimo 6',
-                'min_age.max' => 'L\' età consigliata deve essere massimo 18',
+
             ]
         );
 
@@ -60,7 +59,7 @@ class VideogameController extends Controller
 
         $videogame->save();
 
-        return to_route('admin.show', $videogame)->with('alert-message', 'Post creato con successo');;
+        return to_route('admin.videogames.show', $videogame)->with('alert-message', 'Post creato con successo');;
     }
 
     /**
@@ -68,7 +67,7 @@ class VideogameController extends Controller
      */
     public function show(Videogame $videogame)
     {
-        //
+        return view('admin.videogames.show', compact('videogame'));
     }
 
     /**
@@ -76,7 +75,7 @@ class VideogameController extends Controller
      */
     public function edit(Videogame $videogame)
     {
-        return view('admin.update', $videogame);
+        return view('admin.videogames.edit', compact('videogame'));
     }
 
     /**
@@ -91,8 +90,8 @@ class VideogameController extends Controller
                 'title' => ['required', 'string', 'max:50', Rule::unique('videogames')->ignore($videogame)],
                 'description' => 'required|string|',
                 'img_path' => 'required|url:http,https',
-                'release_date' => 'required|string',
-                'min_age' => 'required|string|min:6|max:18',
+                'release_date' => 'required|date',
+                'min_age' => 'required|string|',
             ],
             [
                 'title.required' => 'Il Nome del videogioco è obbligatorio',
@@ -102,15 +101,14 @@ class VideogameController extends Controller
                 'description.required' => 'La descrizione è obbligatoria',
                 'release_date.required' => 'La data di uscita è obbligatoria',
                 'min_age.required' => 'L\' età consigliata è obbligatoria',
-                'min_age.min' => 'L\' età consigliata deve essere minimo 6',
-                'min_age.max' => 'L\' età consigliata deve essere massimo 18',
+
             ]
         );
 
 
         $videogame->update($data_new_videogame);
 
-        return to_route('admin.show', $videogame)->with('alert-type', 'success')->with('alert-message', "$videogame->title modificato con successo");
+        return to_route('admin.videogames.show', $videogame)->with('alert-type', 'success')->with('alert-message', "$videogame->title modificato con successo");
     }
 
     /**
@@ -121,6 +119,6 @@ class VideogameController extends Controller
         $videogame = Videogame::findOrFail($id);
         $videogame->delete();
 
-        return to_route('admin.index');
+        return to_route('admin.videogames.index');
     }
 }
