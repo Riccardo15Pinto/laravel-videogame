@@ -21,7 +21,9 @@ class VideogameController extends Controller
      */
     public function create()
     {
-        //
+        $videogame = new Videogame();
+
+        return view('admin.videogame.create', compact('videogame'));
     }
 
     /**
