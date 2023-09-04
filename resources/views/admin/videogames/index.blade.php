@@ -29,12 +29,11 @@
                         <a href="{{ route('admin.videogames.show', $videogame) }}" class="btn btn-primary ms-2">Go to
                             the videogame</a>
                         <a href="{{ route('admin.videogames.edit', $videogame) }}" class="btn btn-warning ms-2">Edit</a>
-                        <form action="{{ route('admin.videogames.destroy', $videogame) }}" method="POST"
-                            class="ms-2 delete-form">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                        <button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal"
+                            data-bs-target="#{{ $videogame->id }}">
+                            Delete
+                        </button>
+                        @include('admin.includes.modal_delete')
                     </div>
                 </div>
             </div>
