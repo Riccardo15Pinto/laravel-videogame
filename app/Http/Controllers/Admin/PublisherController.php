@@ -79,7 +79,7 @@ class PublisherController extends Controller
      */
     public function destroy(Publisher $publisher)
     {
-        $publisher->delete();
+        $publisher->forceDelete();
         return to_route('admin.publishers.index');
     }
 }
