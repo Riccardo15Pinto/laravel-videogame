@@ -20,6 +20,7 @@
                 <tr>
                     <th scope="col" colspan="1" width="10%">Id</th>
                     <th scope="col" colspan="1" width="60%">Title</th>
+                    <th scope="col" colspan="1" width="60%">Azienda</th>
                     <th class="text-center" scope="col" colspan="1" width="30%">Tasks</th>
                 </tr>
             </thead>
@@ -28,6 +29,7 @@
                     <tr>
                         <td>{{ $videogame->id }}</td>
                         <td>{{ $videogame->title }}</td>
+                        <td>{{ $videogame->publisher->name_company }}</td>
                         <td>
                             <div class="d-flex justify-content-center align-items-center gap-3">
                                 <a href="{{ route('admin.videogames.show', $videogame) }}" class="btn btn-primary ms-2">Go
