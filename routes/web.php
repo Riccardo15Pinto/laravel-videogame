@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\PublisherController;
 use App\Http\Controllers\Admin\VideogameController;
 use App\Http\Controllers\Guests\HomeController as GuestsHomeController;
 use App\Http\Controllers\ProfileController;
@@ -24,8 +25,8 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::get('/', [AdminHomeController::class, 'index'])->name('home');
     Route::get('videogames/trash', [VideogameController::class, 'trash'])->name('videogames.trash');
     Route::resource('videogames', VideogameController::class);
+    Route::resource('publisher', PublisherController::class);
 });
-
 
 
 Route::middleware('auth')->group(function () {
