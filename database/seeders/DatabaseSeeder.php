@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call([PublisherSeeder::class, DeveloperSeeder::class, VideogameSeeder::class]);
+
+        $this->call([DeveloperSeeder::class, ConsoleSeeder::class, PublisherSeeder::class, VideogameSeeder::class]);
+
+
     }
 }
