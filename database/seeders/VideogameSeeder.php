@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Publisher;
 use App\Models\Videogame;
 use Faker\Generator as Faker;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 
 class VideogameSeeder extends Seeder
 {
@@ -14,8 +16,10 @@ class VideogameSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
+        $publisher_ids = Publisher::pluck('id')->toArray();
         for ($i = 1; $i <= 30; $i++) {
             $videogame = new Videogame();
+            $videogame->publisher_id = Arr::random($publisher_ids);
             $videogame->title = $faker->text(50);
             $videogame->description = $faker->paragraph(5, true);
             $videogame->img_path = $faker->imageUrl(250, 250);

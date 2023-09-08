@@ -11,4 +11,9 @@ class Videogame extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable = ['title', 'description', 'img_path', 'release_date', 'min_age'];
+
+    public function publisher()
+    {
+        return $this->belongsTo(Publisher::class);
+    }
 }
