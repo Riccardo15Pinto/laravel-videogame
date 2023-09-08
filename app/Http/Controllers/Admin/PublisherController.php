@@ -23,7 +23,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.publishers.create');
     }
 
     /**
@@ -31,38 +31,55 @@ class PublisherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([], []);
+
+        $data = $request->all();
+
+        $publisher = new Publisher();
+
+        $publisher->fill($data);
+
+        $publisher->save();
+
+        return to_route('admin.publishers.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Publisher $publisher)
     {
-        //
+        return view('admin.publishers.show', compact('publisher'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Publisher $publisher)
     {
-        //
+        return view('admin.publishers.edit', compact('publisher'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Publisher $publisher)
     {
-        //
+        $request->validate([], []);
+
+        $data = $request->all();
+
+        $publisher->update($data);
+
+        return to_route('admin.publishers.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Publisher $publisher)
     {
-        //
+        $publisher->delete();
+        return to_route('admin.publishers.index');
     }
 }
