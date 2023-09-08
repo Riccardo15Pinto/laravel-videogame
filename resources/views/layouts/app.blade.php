@@ -52,6 +52,9 @@
                             <li class="nav-item">
                                 <a href="{{ route('admin.videogames.index') }}" class="nav-link">VideoGames</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.publishers.index') }}" class="nav-link">Publishers</a>
+                            </li>
                         @endguest
                     </ul>
 

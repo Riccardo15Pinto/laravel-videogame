@@ -25,7 +25,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::get('/', [AdminHomeController::class, 'index'])->name('home');
     Route::get('videogames/trash', [VideogameController::class, 'trash'])->name('videogames.trash');
     Route::resource('videogames', VideogameController::class);
-    Route::resource('publisher', PublisherController::class);
+    Route::resource('publishers', PublisherController::class);
 });
 
 
